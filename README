@@ -1,0 +1,92 @@
+Prototype2D
+Copyright (c) 2009, Mihail Szabolcs
+
+Prototype2D is a small 2D engine built on the top of QT, OpenGL
+and Box2D hacked together in a *few* days (not more than two weeks); 
+mostly after work, so don't expect too much; as the name says it's a 
+Prototype! :).
+
+There aren't any good examples of this trio at the moment,
+especially when it comes to Box2D with real 'textures'/'sprites'
+and C++.
+
+I'm not going to spend more time on developing this(at least
+for now) but I learned a great deal of things while experimenting
+and making all these work together (it's a hell of an ugly and
+tendius job to make Box2D work as you want ...; but next time
+it will be a hell lot easier ... LOL).
+
+I tried to separate stuff as much as possible, so it's quite
+'modular' and it can be easily extended. (e.g wrapping other
+Box2D features)
+
+If you find it useful, or you do something useful with it drop
+me a line and I'll link back to your production.
+
+Features:
+	(using the p0w3r of QT as much as POSSIBLE)
+	
+	Texture class and Singleton Manager
+		- textures are reference counted
+	Actor class
+		- wraps tons of Box2D boiler plate code
+			- easy support for custom Box2D shapes
+		- support for tiled animations
+		- transparency ( blending )
+		- etc ...
+	ActorJoint class
+		- wraps tons of the Box2D boiler plate code
+		- custom wrapper for the b2RevoluteJoint
+	World Class
+		- wraps tons of Box2D boiler plate code
+		- built-in actor drag-drop
+		- actor management
+			- sorting by z-order
+			- generating unique names
+			- finding actors by name
+			- etc.
+		- joint management
+			- adding/removing joints
+		- QT signal for collision detection
+		- etc.
+	Environment class
+		- shares data across all the modules
+	Game Manager class	
+		- support for multiple built-in 'demos'
+	Startup Dialog	
+		- custom resolution / fullscreen
+		- drop-down with all the registered 'demos' in
+		  the Game Manager
+	Canvas class
+		- customized QGLWidget
+		- anti-aliasing (multi-sampling) support (enabled by default)
+		- debug draw for physics bodies
+		- different render paths (all rendering goes through one pipe)
+			- textured
+			- textured with blending
+			- wireframe
+			- imediate mode / vertex arrays (enabled by default)
+			- etc.
+	Window class
+		- show / hide (track) mouse
+		- capture keyboard input
+		- resizeable window
+		- etc.
+	Other
+		- custom types (vector, point, etc)
+		- screen to world converter macro
+		- world to screen converter macro
+		- etc.
+		
+It should work/run and compile fine on all three platforms:
+Linux (hey it's me!), Windows and MacOSX (possibly Open Solaris).
+		
+Credits:
+	Graphics -- Lost Garden (http://lostgarden.com/)
+
+Web:
+	http://www.szabster.net/tag/prototype2d/
+
+Release Notes:
+
+Jul 19, 2009 - v0.1 released (initial release)
