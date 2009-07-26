@@ -49,7 +49,7 @@ using namespace Sys;
 static Env *gEnv = &Env::getInstance();
 static TextureManager *gTex = &TextureManager::getInstance();
 
-Game::Game() : mGravity(false), mWorld(0), mPea(0), mPointer(0), mBoom(0)
+Game::Game() : mGravity(true), mWorld(0), mPea(0), mPointer(0), mBoom(0)
 {
 	qDebug() << "Force::Game created ...";
 }

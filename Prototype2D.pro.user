@@ -217,7 +217,7 @@
     <value type="QString" >-r</value>
    </valuelist>
    <value key="abstractProcess.command" type="QString" >/usr/bin/qmake-qt4</value>
-   <value key="abstractProcess.enabled" type="bool" >true</value>
+   <value key="abstractProcess.enabled" type="bool" >false</value>
    <value key="abstractProcess.workingDirectory" type="QString" >/home/icebreaker/Projects/Prototype2D</value>
    <value key="buildConfiguration" type="int" >0</value>
   </valuemap>
@@ -274,7 +274,7 @@
   <valuemap type="QVariantMap" >
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >Release</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList" >
-    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-mFNiXzq62u,guid=f1a28471cedd53a89322c2f24a6ab12e</value>
+    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-pUowx9bO4Z,guid=cb9de9ae9962cec55d8da4594a6bf276</value>
     <value type="QString" >DESKTOP_SESSION=default</value>
     <value type="QString" >DESKTOP_STARTUP_ID=</value>
     <value type="QString" >DISPLAY=:0.0</value>
@@ -282,29 +282,30 @@
     <value type="QString" >GDM_LANG=en_US.UTF-8</value>
     <value type="QString" >GDM_XSERVER_LOCATION=local</value>
     <value type="QString" >GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString" >GNOME_KEYRING_PID=4445</value>
-    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-pik2wR/socket</value>
-    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-EyNrLh/S.gpg-agent:4568:1</value>
+    <value type="QString" >GNOME_KEYRING_PID=4480</value>
+    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-xMAXMe/socket</value>
+    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-laWfDb/S.gpg-agent:4603:1</value>
     <value type="QString" >GTK_MODULES=canberra-gtk-module</value>
     <value type="QString" >GTK_RC_FILES=/etc/gtk/gtkrc:/home/icebreaker/.gtkrc-1.2-gnome2</value>
     <value type="QString" >HOME=/home/icebreaker</value>
     <value type="QString" >LANG=en_US.UTF-8</value>
+    <value type="QString" >LANGUAGE=</value>
     <value type="QString" >LD_LIBRARY_PATH=/home/icebreaker/Projects/qt-creator-personal/lib/qtcreator:</value>
     <value type="QString" >LOGNAME=icebreaker</value>
     <value type="QString" >ORBIT_SOCKETDIR=/tmp/orbit-icebreaker</value>
     <value type="QString" >PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString" >PWD=/home/icebreaker</value>
     <value type="QString" >QTDIR=/usr</value>
-    <value type="QString" >SESSION_MANAGER=local/Seth:/tmp/.ICE-unix/4456</value>
+    <value type="QString" >SESSION_MANAGER=local/Seth:/tmp/.ICE-unix/4492</value>
     <value type="QString" >SHELL=/bin/bash</value>
-    <value type="QString" >SSH_AGENT_PID=4545</value>
-    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-pik2wR/socket.ssh</value>
+    <value type="QString" >SSH_AGENT_PID=4580</value>
+    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-xMAXMe/socket.ssh</value>
     <value type="QString" >USER=icebreaker</value>
     <value type="QString" >USERNAME=icebreaker</value>
     <value type="QString" >WINDOWPATH=7</value>
     <value type="QString" >XAUTHORITY=/home/icebreaker/.Xauthority</value>
     <value type="QString" >XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString" >XDG_SESSION_COOKIE=f567db187559c2d1e6cfe0734997231d-1248506156.847586-1836975861</value>
+    <value type="QString" >XDG_SESSION_COOKIE=f567db187559c2d1e6cfe0734997231d-1248588405.334965-313325358</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool" >true</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList" >
