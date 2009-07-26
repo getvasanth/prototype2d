@@ -230,8 +230,8 @@ float Actor::getPosY( void ) const
 void Actor::getPos( t_point *pPos )
 {
 	Q_ASSERT( pPos != 0 );
-	*pPos[0] = mPos[0];
-	*pPos[1] = mPos[1];
+	(*pPos)[0] = mPos[0];
+	(*pPos)[1] = mPos[1];
 }
 
 float Actor::getWidth( void ) const
@@ -247,8 +247,8 @@ float Actor::getHeight( void ) const
 void Actor::getSize( t_point *pSize )
 {
 	Q_ASSERT( pSize != 0 );
-	*pSize[0] = mSize[0];
-	*pSize[1] = mSize[1];
+	(*pSize)[0] = mSize[0];
+	(*pSize)[1] = mSize[1];
 }
 
 float Actor::getHWidth( void ) const
@@ -264,8 +264,8 @@ float Actor::getHHeight( void ) const
 void Actor::getHalfSize( t_point *pHSize )
 {
 	Q_ASSERT( pHSize != 0 );
-	*pHSize[0] = mHSize[0];
-	*pHSize[1] = mHSize[1];
+	(*pHSize)[0] = mHSize[0];
+	(*pHSize)[1] = mHSize[1];
 }
 
 float Actor::getRadius( void ) const
@@ -767,7 +767,7 @@ void Actor::setTransparency( float pLevel )
 
 void Actor::_setTexCoord( short pFrame, t_point *pCoord, t_pos pPos )
 {
-	_setTexCoord( pFrame, *pCoord[0], *pCoord[1], pPos );
+	_setTexCoord( pFrame, (*pCoord)[0], (*pCoord)[1], pPos );
 }
 
 void Actor::_setTexCoord( short pFrame, float pU, float pV, t_pos pPos )
@@ -778,7 +778,7 @@ void Actor::_setTexCoord( short pFrame, float pU, float pV, t_pos pPos )
 
 void Actor::_setVertex( t_point *pVertex, t_pos pPos )
 {
-	_setVertex(*pVertex[0],*pVertex[1],pPos);
+	_setVertex((*pVertex)[0],(*pVertex)[1],pPos);
 }
 
 void Actor::_setVertex( float pX, float pY, t_pos pPos )
