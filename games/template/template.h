@@ -39,6 +39,11 @@
 #include "igame.h"
 #include "world.h"
 
+namespace GL
+{
+	class Canvas;
+}
+
 namespace Template {
 
 class Game : public Interface::IGame
@@ -52,8 +57,8 @@ public:
 	virtual bool init(void);
 	virtual bool shutdown(void);
 
-	virtual void render(void);
-	virtual void think(void);
+	virtual void render(GL::Canvas *pCanvas=0);
+	virtual void think(GL::Canvas *pCanvas=0);
 
 	virtual bool updateMouse(int pX, int pY, int pButton, t_MouseState pState);
 	virtual bool updateKeys(int pKey, t_KeyState pState);

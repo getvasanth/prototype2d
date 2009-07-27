@@ -33,24 +33,27 @@
 	This file is part of Prototype2D.
 
 ==============================================================================*/
-#ifndef GAME_H
-#define GAME_H
+#ifndef TAIL_H
+#define TAIL_H
 
 #include "igame.h"
 #include "world.h"
+
+#include <QtCore/QObject>
 
 namespace GL
 {
 	class Canvas;
 }
 
-namespace Pyp {
+namespace Tail {
 
-class Background;
-class ToolPallette;
+using namespace GL;
 
-class Game : public Interface::IGame
+class Game : public QObject, public Interface::IGame
 {
+	Q_OBJECT
+
 public:
 	Game();
 	virtual ~Game();
@@ -60,41 +63,40 @@ public:
 	virtual bool init(void);
 	virtual bool shutdown(void);
 
-	virtual void render(GL::Canvas *pCanvas=0);
-	virtual void think(GL::Canvas *pCanvas=0);
+	virtual void render(Canvas *pCanvas=0);
+	virtual void think(Canvas *pCanvas=0);
 
 	virtual bool updateMouse(int pX, int pY, int pButton, t_MouseState pState);
 	virtual bool updateKeys(int pKey, t_KeyState pState);
 
-protected:
-	template <typename T>
-	void _spawn(const int pX, const int pY,
-				const QString &pTexture, float pBounce = 0.5f)
+public slots:
+	void handleCollision(const ContactPoint *pPoint);
+
+public:
+	enum
 	{
-		T *lActor = mWorld->createActor<T>("Block",true);
-
-		lActor->setTexture(pTexture);
-		lActor->setRect(pX-16,pY-16,71,61);
-		lActor->setBlending(GL::Actor::B_SRC_ALPHA);
-		lActor->setDensity(1.0f);
-		lActor->setRestituition(pBounce);
-		lActor->applyPhysX();
-		//lActor->setZOrder(1.0f);
-
-		mWorld->sortByZorder();
-	}
+		MAIN_PEA = BIT(6)
+	};
 
 protected:
+	//! Gravity Flag
+	bool mGravity;
 	// World
-	GL::World *mWorld;
-	// Not Managed By World
-	GL::Actor *mPointer;
-	// Background
-	Background *mBackg;
-	// Tool Pallette
-	ToolPallette *mToolPallette;
+	World *mWorld;
+	// Pea
+	Actor *mPea;
+	// Pointer
+	Actor *mPointer;
+	// Boom
+	Actor *mBoom;
+	//! Log File
+	QString mLogFile;
+	//! Last Modified
+	QDateTime mLastModified;
+	//! Last Data
+	QString mLastLine;
 };
 
 }
 
-#endif // GAME_H
+#endif // TAIL_H

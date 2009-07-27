@@ -153,7 +153,7 @@ void Canvas::paintGL(void)
 	// IF IT'S NULL, AN ASSERT ALREADY TRIGGERS
 	// INSIDE INITIALIZEGL, SO IT SHOULD NEVER GET
 	// HERE AS NULL ...
-	mGame->render();
+	mGame->render(this);
 
 	end2D();
 }
@@ -161,7 +161,7 @@ void Canvas::paintGL(void)
 void Canvas::updateGL(void)
 {
 	QGLWidget::updateGL();
-	mGame->think();
+	mGame->think(this);
 }
 
 void Canvas::begin2D( int pWidth, int pHeight )

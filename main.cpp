@@ -49,6 +49,7 @@ using namespace Game;
 #include "games/pyp/pyp.h"
 #include "games/template/template.h"
 #include "games/force/force.h"
+#include "games/tail/tail.h"
 
 int main(int argc, char *argv[])
 {
@@ -61,6 +62,7 @@ int main(int argc, char *argv[])
 	lGames->addGame("Pyp",new Pyp::Game());
 	lGames->addGame("Template",new Template::Game());
 	lGames->addGame("Apply Force",new Force::Game());
+	lGames->addGame("GL Tail Clone",new Tail::Game());
 
 #ifdef SHOW_STARTUP_DIALOG
 	Startupdlg lDlg;

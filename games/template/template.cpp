@@ -39,6 +39,7 @@
 #include "texture.h"
 #include "texturemanager.h"
 #include "env.h"
+#include "canvas.h"
 
 #include <QtCore/QDebug>
 
@@ -126,14 +127,18 @@ bool Game::shutdown(void)
 	return true;
 }
 
-void Game::render(void)
+void Game::render(Canvas *pCanvas)
 {
+	Q_UNUSED(pCanvas);
+
 	// RENDER WORLD
 	mWorld->render();
 }
 
-void Game::think(void)
+void Game::think(Canvas *pCanvas)
 {
+	Q_UNUSED(pCanvas);
+
 	// UPDATE PHYSICS FIRST
 	mWorld->updatePhysics();
 

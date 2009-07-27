@@ -41,6 +41,11 @@
 
 #include <QtCore/QObject>
 
+namespace GL
+{
+	class Canvas;
+}
+
 namespace Force {
 
 using namespace GL;
@@ -58,8 +63,8 @@ public:
 	virtual bool init(void);
 	virtual bool shutdown(void);
 
-	virtual void render(void);
-	virtual void think(void);
+	virtual void render(Canvas *pCanvas=0);
+	virtual void think(Canvas *pCanvas=0);
 
 	virtual bool updateMouse(int pX, int pY, int pButton, t_MouseState pState);
 	virtual bool updateKeys(int pKey, t_KeyState pState);

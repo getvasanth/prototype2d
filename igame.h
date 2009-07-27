@@ -36,6 +36,11 @@
 #ifndef IGAME_H
 #define IGAME_H
 
+namespace GL
+{
+	class Canvas;
+}
+
 namespace Interface {
 
 //! Game Interface Class
@@ -50,8 +55,8 @@ public:
 	virtual bool init(void) = 0;
 	virtual bool shutdown(void) = 0;
 
-	virtual void render(void) = 0;
-	virtual void think(void) = 0;
+	virtual void render(GL::Canvas *pCanvas=0) = 0;
+	virtual void think(GL::Canvas *pCanvas=0) = 0;
 
 public:
 	typedef enum e_MouseState

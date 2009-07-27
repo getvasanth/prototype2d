@@ -45,6 +45,7 @@
 #include "pea.h"
 #include "tri.h"
 #include "toolpallette.h"
+#include "canvas.h"
 
 #include <QtCore/QDebug>
 
@@ -198,8 +199,10 @@ bool Game::shutdown(void)
 	return true;
 }
 
-void Game::render(void)
+void Game::render(Canvas *pCanvas)
 {
+	Q_UNUSED(pCanvas);
+
 	// RENDER BACKGROUND BEFORE ANYTHING ELSE
 	mBackg->render();
 
@@ -213,8 +216,10 @@ void Game::render(void)
 	mPointer->render();
 }
 
-void Game::think(void)
+void Game::think(Canvas *pCanvas)
 {
+	Q_UNUSED(pCanvas);
+
 	// UPDATE PHYSICS FIRST
 	mWorld->updatePhysics();
 

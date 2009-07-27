@@ -485,7 +485,7 @@ void Actor::_drawDebug(void)
 	glRotatef(mRot,0.0f,0.0f,1.0f);
 
 	glBegin(GL_LINE_LOOP);
-	if( int lR = getRadius() ) // draw spheres
+	if( float lR = getRadius() ) // draw spheres
 	{
 		for(unsigned short i=0;i<=360;i+=5)
 			glVertex2f(sin(D2R(i)) * lR, cos(D2R(i)) * lR);

@@ -33,7 +33,7 @@
 	This file is part of Prototype2D.
 
 ==============================================================================*/
-#include "force.h"
+#include "tail.h"
 #include "actor.h"
 #include "world.h"
 #include "texture.h"
@@ -41,23 +41,45 @@
 #include "env.h"
 #include "canvas.h"
 
+#include <QtGui/QMessageBox>
 #include <QtCore/QDebug>
 
-using namespace Force;
+using namespace Tail;
 using namespace GL;
 using namespace Sys;
 
 static Env *gEnv = &Env::getInstance();
 static TextureManager *gTex = &TextureManager::getInstance();
 
-Game::Game() : mGravity(true), mWorld(0), mPea(0), mPointer(0), mBoom(0)
+Game::Game() : mGravity(true), mWorld(0), mPea(0), mPointer(0), mBoom(0), mLogFile("")
 {
-	qDebug() << "Force::Game created ...";
+	qDebug() << "Tail::Game created ...";
+	//! Make Log File Path (data/apache.log)
+	mLogFile = QString(gEnv->mBasePath)+"apache.log";
+
+	if(!QFile::exists(mLogFile))
+	{
+		QMessageBox lMsgBox;
+		lMsgBox.setIcon(QMessageBox::Warning);
+		lMsgBox.setText(mLogFile+" doesn't exists!");
+		lMsgBox.exec();
+
+		//! Set to NOW()
+		mLastModified = QDateTime::currentDateTime();
+	}
+	else
+	{
+		//! Set actual file time
+		mLastModified = QFileInfo(mLogFile).lastModified();
+	}
+
+	//! Set initial text ...
+	mLastLine = "GL Tail Clone";
 }
 
 Game::~Game()
 {
-	qDebug() << "Force::Game destroyed ...";
+	qDebug() << "Tail::Game destroyed ...";
 }
 
 bool Game::configure(void)
@@ -185,7 +207,7 @@ bool Game::init(void)
 
 	{
 		Actor *lActor = mWorld->createActor<Actor>("Pea");
-		lActor->setFlags(Actor::S_CIRCLE);
+		lActor->setFlags(Actor::S_CIRCLE | MAIN_PEA);
 		lActor->setTexture("textures/valeria/valeria.png");
 		lActor->setRect(250,250,37,37);
 		lActor->setBlending(Actor::B_SRC_ALPHA);
@@ -237,10 +259,17 @@ bool Game::shutdown(void)
 
 void Game::render(Canvas *pCanvas)
 {
-	Q_UNUSED(pCanvas);
+	//Q_UNUSED(pCanvas);
 
 	// RENDER WORLD
 	mWorld->render();
+
+	// RENDER TEXT
+	glPushMatrix();
+		glPushAttrib(GL_ALL_ATTRIB_BITS);
+			pCanvas->renderText(50,50,mLastLine);
+		glPopAttrib();
+	glPopMatrix();
 
 	// RENDER POINTER
 	mPointer->render();
@@ -262,6 +291,47 @@ void Game::think(Canvas *pCanvas)
 	{
 		mBoom->setPos(-100,-100);
 		mSomeDelay = 0;
+	}
+
+	//! check for the file
+	if( QFile::exists(mLogFile) )
+	{
+		// get file information
+		QFileInfo lFileInfo(mLogFile);
+
+		// get the last time it was modified
+		QDateTime lNow = lFileInfo.lastModified();
+
+		// PARSE + Watch Apache Log
+		if( lNow != mLastModified ) // moving in?
+		{
+			// copy date
+			mLastModified = lNow;
+
+			QString lLastLine;
+			QFile lFile(mLogFile);
+			if (lFile.open(QIODevice::ReadOnly | QIODevice::Text))
+			{
+				// LOOP TO THE END ...
+				// BUGBUG: this is very ineffecient!!!!
+				QTextStream lInput(&lFile);
+				while (!lInput.atEnd())
+					lLastLine = lInput.readLine();
+
+				// copy it over
+				mLastLine = lLastLine;
+			}
+
+			Actor *lActor = mWorld->createActor<Actor>("Pea",true);
+			lActor->setFlags(Actor::S_CIRCLE);
+			lActor->setTexture("textures/valeria/valeria.png");
+			lActor->setRect(b2Random(50,700),b2Random(50,100),45,45);
+			lActor->setBlending(Actor::B_SRC_ALPHA);
+			lActor->setDensity(1.5f);
+			lActor->setFriction(0.3f);
+			lActor->setRestituition(0.8f);
+			lActor->applyPhysX();
+		}
 	}
 }
 
@@ -375,7 +445,7 @@ bool Game::updateKeys(int pKey, t_KeyState pState)
 				Actor *lActor = mWorld->createActor<Actor>("Pea",true);
 				lActor->setFlags(Actor::S_CIRCLE);
 				lActor->setTexture("textures/valeria/valeria.png");
-				lActor->setRect(b2Random(60,400),b2Random(60,400),37,37);
+				lActor->setRect(b2Random(60,400),b2Random(60,400),45,45);
 				lActor->setBlending(Actor::B_SRC_ALPHA);
 				lActor->setDensity(1.5f);
 				lActor->setFriction(0.3f);
@@ -396,7 +466,7 @@ void Game::handleCollision(const ContactPoint *pPoint)
 	//const t_point *lP = &pPoint->mPos;
 
 	// SHOW BIM-BA-RA-BOOOOOM!
-	if( pPoint->mActor2->isFlag(Actor::S_CIRCLE) )
+	if( pPoint->mActor2->isFlag(MAIN_PEA) )
 	{
 		mBoom->setPos(pPoint->mActor2->getPosX()-45,
 					  pPoint->mActor2->getPosY()-45);
