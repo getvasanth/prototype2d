@@ -67,6 +67,8 @@ bool Texture::load( const QString &pFileName, bool pClamp )
 
 	lImageTemp = QGLWidget::convertToGLFormat( lImage );
 
+	// TODO: add support for resize to POWER of TWO
+
 	// store these for later
 	mWidth = lImageTemp.width();
 	mHeight = lImageTemp.height();

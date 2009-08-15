@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     games/template/template.cpp \
     actorjoint.cpp \
     games/force/force.cpp \
-    games/tail/tail.cpp
+    games/tail/tail.cpp \
+    games/anim/anim.cpp
 HEADERS += mainwindow.h \
     world.h \
     texture.h \
@@ -45,7 +46,8 @@ HEADERS += mainwindow.h \
     games/template/template.h \
     actorjoint.h \
     games/force/force.h \
-    games/tail/tail.h
+    games/tail/tail.h \
+    games/anim/anim.h
 FORMS += mainwindow.ui \
     startupdlg.ui
 LIBS += -L"Box2D"

@@ -33,74 +33,45 @@
 	This file is part of Prototype2D.
 
 ==============================================================================*/
-#include <QtGui/QApplication>
-#include "mainwindow.h"
-#include "startupdlg.h"
-#include "env.h"
-#include "gamemanager.h"
-#include "defines.h"
+#ifndef ANIM_H
+#define ANIM_H
 
-#include <QtOpenGL>
-#include <QtCore/QDebug>
+#include "igame.h"
+#include "world.h"
 
-using namespace Sys;
-using namespace Game;
-
-#include "games/pyp/pyp.h"
-#include "games/template/template.h"
-#include "games/force/force.h"
-#include "games/tail/tail.h"
-#include "games/anim/anim.h"
-
-int main(int argc, char *argv[])
+namespace GL
 {
-	QApplication lApp(argc, argv);
-
-	Env *lEnv = &Env::getInstance();
-	GameManager *lGames = &GameManager::getInstance();
-
-	// add all built-in games
-	lGames->addGame("Pyp",new Pyp::Game());
-	lGames->addGame("Template",new Template::Game());
-	lGames->addGame("Apply Force",new Force::Game());
-	lGames->addGame("GL Tail Clone",new Tail::Game());
-	lGames->addGame("Animation",new Animation::Game());
-
-#ifdef SHOW_STARTUP_DIALOG
-	Startupdlg lDlg;
-	lDlg.show();
-
-	if( lDlg.exec() == QDialog::Rejected )
-	{
-		return 13;
-	}
-#endif
-
-#ifdef WORLD_MULTISAMPLING
-	QGLFormat lGLFrm = QGLFormat::defaultFormat();
-	lGLFrm.setSampleBuffers(true);
-	lGLFrm.setSamples(lEnv->mNumSamples);
-	QGLFormat::setDefaultFormat(lGLFrm);
-#endif
-
-	// PASS IN THE GAME INSTANCE
-	MainWindow *lWindow = new MainWindow(lGames->getGame());
-
-	// WINDOWED MODE?
-	if( lEnv->mFullscreen )
-		lWindow->showFullScreen();
-	else
-		lWindow->show();
-
-	// RUN
-	int lRet = lApp.exec();
-
-	// DELETE WINDOW
-	delete lWindow;
-
-	// remove all games
-	lGames->removeAll();
-
-	// exit
-	return lRet;
+	class Canvas;
 }
+
+namespace Animation {
+
+class Game : public Interface::IGame
+{
+public:
+	Game();
+	virtual ~Game();
+
+	virtual bool configure( void );
+
+	virtual bool init(void);
+	virtual bool shutdown(void);
+
+	virtual void render(GL::Canvas *pCanvas=0);
+	virtual void think(GL::Canvas *pCanvas=0);
+
+	virtual bool updateMouse(int pX, int pY, int pButton, t_MouseState pState);
+	virtual bool updateKeys(int pKey, t_KeyState pState);
+
+protected:
+	//! World
+	GL::World *mWorld;
+	//! Air Plane Actor
+	GL::Actor *mAirPlane;
+	//! Gravity Switch
+	bool mGravity;
+};
+
+}
+
+#endif // ANIMATION_H
