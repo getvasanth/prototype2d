@@ -50,21 +50,20 @@ using namespace Sys;
 static Env *gEnv = &Env::getInstance();
 static TextureManager *gTex = &TextureManager::getInstance();
 
-Actor::Actor( const QString &pName, World *pWorld ) :
-				 mTexture(0),
-				 mFlags(0),
-				 mNumFrames(-1),
-				 mFrame(-1),
-				 mFrameLoop(false),
-				 mAnimate(false),
-				 mFrameCounter(0.0f),
-				 mTexCoords(0),
-				 mVertices(0),
-				 mName(""),
-				 mId(0),
-				 mBlending(B_NONE),
-				 mBody(0),
-				 mWorld(0)
+Actor::Actor( const QString &pName, World *pWorld ) :	mTexture(0),
+														mFlags(0),
+														mNumFrames(-1),
+														mFrame(-1),
+														mFrameLoop(false),
+														mAnimate(false),
+														mFrameCounter(0.0f),
+														mTexCoords(0),
+														mVertices(0),
+														mName(""),
+														mId(0),
+														mBlending(B_NONE),
+														mBody(0),
+														mWorld(0)
 {
 	// no joints by defult
 	setHasJoints(false);

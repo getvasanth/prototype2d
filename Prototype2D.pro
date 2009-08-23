@@ -23,7 +23,9 @@ SOURCES += main.cpp \
     actorjoint.cpp \
     games/force/force.cpp \
     games/tail/tail.cpp \
-    games/anim/anim.cpp
+    games/anim/anim.cpp \
+    games/jelly/jelly.cpp \
+    games/jelly/jellyactor.cpp
 HEADERS += mainwindow.h \
     world.h \
     texture.h \
@@ -47,7 +49,9 @@ HEADERS += mainwindow.h \
     actorjoint.h \
     games/force/force.h \
     games/tail/tail.h \
-    games/anim/anim.h
+    games/anim/anim.h \
+    games/jelly/jelly.h \
+    games/jelly/jellyactor.h
 FORMS += mainwindow.ui \
     startupdlg.ui
 LIBS += -L"Box2D"

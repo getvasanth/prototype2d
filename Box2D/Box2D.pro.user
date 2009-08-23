@@ -55,6 +55,7 @@
    <value key="QtVersionId" type="int" >0</value>
    <value key="ToolChain" type="int" >0</value>
    <value key="addQDumper" type="" ></value>
+   <value key="buildConfiguration" type="int" >2</value>
    <value key="buildDirectory" type="QString" >/home/icebreaker/Projects/Prototype2D/Box2D</value>
   </valuemap>
  </data>
@@ -65,6 +66,7 @@
    <value key="QtVersionId" type="int" >0</value>
    <value key="ToolChain" type="int" >0</value>
    <value key="addQDumper" type="" ></value>
+   <value key="buildConfiguration" type="int" >0</value>
   </valuemap>
  </data>
  <data>
@@ -114,7 +116,7 @@
    <value key="abstractProcess.command" type="QString" >/usr/bin/qmake-qt4</value>
    <value key="abstractProcess.enabled" type="bool" >false</value>
    <value key="abstractProcess.workingDirectory" type="QString" >/home/icebreaker/Projects/Prototype2D/Box2D</value>
-   <value key="buildConfiguration" type="int" >2</value>
+   <value key="buildConfiguration" type="" ></value>
   </valuemap>
  </data>
  <data>
@@ -177,7 +179,7 @@
   <variable>buildconfiguration-Release-buildstep0</variable>
   <valuemap type="QVariantMap" >
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >Release</value>
-   <value key="buildConfiguration" type="int" >0</value>
+   <value key="buildConfiguration" type="" ></value>
   </valuemap>
  </data>
  <data>

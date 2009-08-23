@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'tail.h'
 **
-** Created: Mon Jul 27 21:15:58 2009
+** Created: Sun Aug 23 18:06:29 2009
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.0)
 **
 ** WARNING! All changes made in this file will be lost!
