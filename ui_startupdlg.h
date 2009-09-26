@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading ui file 'startupdlg.ui'
 **
-** Created: Mon Jul 27 21:08:10 2009
-**      by: Qt User Interface Compiler version 4.5.0
+** Created: Sat Sep 26 15:22:46 2009
+**      by: Qt User Interface Compiler version 4.5.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
 ********************************************************************************/

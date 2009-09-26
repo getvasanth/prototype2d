@@ -69,6 +69,8 @@ public:
 
 	virtual void setRotation(float pRot);
 
+	virtual void center(float pW, float pH);
+
 	virtual void moveXY( float pDX, float pDY );
 
 	virtual bool inRect( float pX, float pY );

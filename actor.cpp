@@ -146,6 +146,8 @@ void Actor::setTexture(Texture *pTex)
 	setFrameSize(0.0f,0.0f,pTex->getWidth(),pTex->getHeight());
 	// set the initial frames to 1 by default
 	setNumFrames(1);
+	// set initial size as the texture size
+	setRect(0,0,pTex->getWidth(),pTex->getHeight());
 }
 
 void Actor::setTexture(const QString &pName)
@@ -203,6 +205,12 @@ void Actor::setRotation(float pRot)
 {
 	// FIXME: set body if physics!
 	_setRotation(pRot);
+}
+
+//! Center the actor around a certain point (globally)
+void Actor::center(float pW, float pH)
+{
+	setPos((pW-mSize[0])/2,(pH-mSize[1])/2);
 }
 
 void Actor::moveXY( float pDX, float pDY )
@@ -754,8 +762,11 @@ void Actor::setBlending( t_blend pBlending )
 
 void Actor::setTransparency( float pLevel )
 {
-	if( pLevel < 0.0f || pLevel > 255.0f )
+	if( pLevel < 0.0f )
 		pLevel = 0; // fully opaque
+
+	if( pLevel > 255.0f )
+		pLevel = 255.0f; // full transparent
 
 	// invert ( 0 == opaque, 255 == fully transparent )
 	pLevel = 255 - pLevel;

@@ -403,5 +403,7 @@ void Game::handleCollision(const ContactPoint *pPoint)
 	}
 
 	if( gEnv->mDebugDraw )
+	{
 		qDebug() << "Collision" << lName1 << " with " << lName2 ;//<< " at position "<<*lP[0]<<","<<*lP[1];
+	}
 }
