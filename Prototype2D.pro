@@ -48,7 +48,7 @@ HEADERS += mainwindow.h \
 	games/pyp/tri.h \
 	games/template/template.h \
 	actorjoint.h \
-	games/force/force.h \
+	games/force/force.h \git
 	games/tail/tail.h \
 	games/anim/anim.h \
 	games/jelly/jelly.h \
